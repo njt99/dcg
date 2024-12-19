@@ -27,7 +27,7 @@ def descend(v):
         fv, f1v = f(v), f1(v)
         print(v, fv, f1v)
         # v = v - f1v . (f1v.T . f1v^-1 ) . fv
-        v -= jnp.dot(jnp.dot(f1v, jnp.linalg.inv(jnp.dot(f1v.T, f1v))), fv)
+        v -= jnp.dot(jnp.dot(f1v.T, jnp.linalg.inv(jnp.dot(f1v, f1v.T))), fv)
 
 f1 = jax.jacfwd(f, holomorphic=True)
 
